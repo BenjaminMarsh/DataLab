@@ -1,0 +1,85 @@
+bitXor
+Description: The bitXor function calculates the XOR (^) operation between two integers x and y using only the bitwise operations ~ (complement) and & (bitwise AND). It achieves this by applying De Morgans Laws to the XOR operation, essentially simulating XOR with NOT and AND operations.
+Example: For instance, if you have bitXor(4, 5), it will return 1.
+Legal operations: Only ~ and & are allowed.
+Maximum operations allowed: The function is constrained to a maximum of 14 operations.
+
+
+tmin
+Description: The tmin function returns the minimum twos complement integer, which is essentially a signed integer representation with the most significant bit (the sign bit) set to 1. This is achieved by left-shifting 1 by 31 bits to place 1 in the sign bit position.
+Legal operations: The function uses legal operations such as !, ~, &, ^, |, +, <<, and >>.
+Maximum operations allowed: The function must be implemented using a maximum of 4 operations.
+
+
+isTmax
+Description: The isTmax function checks if the input integer x is equal to the maximum possible twos complement number. It does this by negating x and adding 1, which is the bitwise representation of the minimum twos complement integer. If the result of this operation is the same as x, it indicates that x is the maximum number, and the function returns 1. Otherwise, it returns 0.
+Legal operations: The function is implemented using !, ~, &, ^, |, and +.
+Maximum operations allowed: The function is limited to 10 operations.
+
+  
+allOddBits
+Description: The allOddBits function checks if all odd-numbered bits in the input word are set to 1. It creates a mask with 1 in every odd bit (bit positions 1, 3, 5, ...) and then checks if the combination of this mask and the input word results in a bitwise NOT operation returning 0 (i.e., all odd bits are 1).
+Examples: For example, allOddBits(0xFFFFFFFD) returns 0, as not all odd bits are set to 1, while allOddBits(0xAAAAAAAA) returns 1, as all odd bits are set to 1.
+Legal operations: The function utilizes !, ~, &, ^, |, +, <<, and >>.
+Maximum operations allowed: The function is constrained to a maximum of 12 operations.
+
+  
+negate
+Description: The negate function returns the negation of an integer x. This is achieved by taking the bitwise complement of x (flipping all bits) and then adding 1 to the result. The twos complement representation of negative numbers is used to perform this operation efficiently.
+Example: For instance, negate(1) returns -1.
+Legal operations: The function uses !, ~, &, ^, |, +, <<, and >>.
+Maximum operations allowed: The function must be implemented using a maximum of 5 operations.
+
+
+isAsciiDigit
+Description: The isAsciiDigit function checks if the input integer x represents an ASCII digit in the range of 0x30 to 0x39 (ASCII codes for characters '0' to '9'). It does this by calculating the difference between x and the lower and upper bounds of the valid range and checking if both differences are non-negative (i.e., x is within the specified range).
+Examples: For example, isAsciiDigit(0x35) returns 1, as 0x35 represents the character '5', which is within the range. However, isAsciiDigit(0x3a) returns 0, as it represents the character ':', which is outside the range.
+Legal operations: The function utilizes !, ~, &, ^, |, +, <<, and >>.
+Maximum operations allowed: The function is constrained to a maximum of 15 operations.
+                                                                                                                             
+                                                                                                                             
+conditional
+Description: The conditional function emulates the ternary conditional operator x ? y : z. It returns y if x is nonzero and z if x is zero. This is accomplished by using a mask that is created by negating x and adding one. The mask will be all ones if x is zero and all zeros if x is nonzero. Then, bitwise AND and OR operations are used to select y or z based on the mask.
+Example: For instance, conditional(2, 4, 5) returns 4, as x is nonzero (2), and therefore, y (4) is returned.
+Legal operations: The function uses !, ~, &, ^, |, +, <<, and >>.
+Maximum operations allowed: The function is limited to 16 operations.
+
+  
+isLessOrEqual
+Description: The isLessOrEqual function checks if x is less than or equal to y and returns 1 if this condition is met, or 0 otherwise. It considers the signs of x and y and compares them. It also checks if x is negative and y - x is non-negative (or zero), indicating that x is less than or equal to y.
+Example: For example, isLessOrEqual(4, 5) returns 1, as 4 is indeed less than 5.
+Legal operations: The function uses !, ~, &, ^, |, +, <<, and >>.
+Maximum operations allowed: The function is constrained to a maximum of 24 operations.
+
+  
+logicalNeg
+Description: The logicalNeg function implements the logical NOT (!) operator using all legal operators except !. It calculates the sign of x by shifting it right by 31 bits, so the sign bit becomes the least significant bit. It then negates x and calculates its sign. The result is 1 if x is zero and 0 if x is non-zero.
+Examples: For example, logicalNeg(3) returns 0, as 3 is non-zero. On the other hand, logicalNeg(0) returns 1 because 0 is considered false in a logical context.
+Legal operations: The function utilizes ~, &, ^, |, +, <<, and >>.
+Maximum operations allowed: The function is limited to 12 operations
+
+
+howManyBits
+Description: The howManyBits function determines the minimum number of bits required to represent an integer x in twos complement representation. It does this by analyzing the binary representation of x, considering its sign and significant bits.
+Examples: For instance, howManyBits(12) returns 5 because 12 can be represented in binary as "1100," which requires 4 bits for the significant digits and an additional bit for the sign bit. Similarly, howManyBits(-5) returns 4, as -5 can be represented as "1011" in binary.
+Legal operations: The function uses !, ~, &, ^, |, +, <<, and >>.
+Maximum operations allowed: The function must be implemented using a maximum of 90 operations.
+
+  
+floatScale2
+Description: The floatScale2 function returns the bit-level equivalent of the expression 2 * f for a floating-point argument f. It correctly handles special cases, including NaN. It achieves this by manipulating the components of the floating-point representation: the sign bit, exponent, and fraction.
+Legal operations: The function can use any integer/unsigned operations, including ||, &&, if, and while.
+Maximum operations allowed: The function is limited to 30 operations.
+
+  
+floatFloat2Int
+Description: The floatFloat2Int function returns the bit-level equivalent of casting a floating-point value f to an integer. It properly handles out-of-range cases, including NaN and infinity. It decodes the components of the floating-point representation to obtain the desired integer value.
+Legal operations: The function can use any integer/unsigned operations, including ||, &&, if, and while.
+Maximum operations allowed: The function is constrained to 30 operations.
+
+                                                                                                                             
+floatNegate
+Description: The floatNegate function returns the bit-level equivalent of the expression -f for a floating-point argument f. It correctly handles special cases, such as NaN, by inverting the sign bit of the floating-point representation.
+Legal operations: The function can use any integer/unsigned operations, including ||, &&, if, and while.
+Maximum operations allowed: The function is limited to 10 operations.
+These advanced functions work with binary representations of floating-point values and involve a deeper understanding of floating-point arithmetic and bit manipulation. They handle corner cases and are subject to stricter operation limits due to their complexity.
